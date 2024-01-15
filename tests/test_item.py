@@ -12,3 +12,13 @@ def test_calculate_total_price():
 def test_apply_discount():
     item1.pay_rate = 0.5
     assert item1.apply_discount() == 5000
+
+
+def test_name_getter():
+    assert item1.name == 'Смартфон'
+
+
+def test_name_setter():
+    assert item1.name == 'Смартфон'
+    item1.name = 'СуперСмартфон'
+    assert item1.name == 'СуперСмарт'
