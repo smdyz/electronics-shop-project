@@ -5,6 +5,14 @@ from src.item import Item
 item1 = Item("Смартфон", 10000, 20)
 
 
+def test_repr():
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+
+def test_str():
+    assert str(item1) == 'Смартфон'
+
+
 def test_calculate_total_price():
     assert item1.calculate_total_price() == 200000
 
@@ -22,11 +30,3 @@ def test_name_setter():
     assert item1.name == 'Смартфон'
     item1.name = 'СуперСмартфон'
     assert item1.name == 'СуперСмарт'
-
-
-def test_repr():
-    assert repr(item1) == "Item('Смартфон', 10000, 20)"
-
-
-def test_str():
-    assert str(item1) == 'Смартфон'
