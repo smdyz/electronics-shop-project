@@ -2,6 +2,7 @@
 import pytest
 from src.item import Item
 from src.phone import Phone
+from src.keyboard import Keyboard
 
 item1 = Item("Смартфон", 10000, 20)
 phone1 = Phone("iPhone 14", 120_000, 5, 2)
@@ -52,3 +53,15 @@ def test_number_of_sim():
     with pytest.raises(ValueError):
         phone1.number_of_sim = 0
 
+
+kb = Keyboard('Dark Project KD87A', 9600, 5)
+
+
+def test_keyboard_str():
+    assert str(kb) == "Dark Project KD87A"
+
+
+def test_keyboard_lang():
+    assert str(kb.language) == "EN"
+    kb.change_lang()
+    assert str(kb.language) == "RU"
