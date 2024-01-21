@@ -64,6 +64,10 @@ class Item:
         if len(self.__name) > 10:
             self.__name = self.__name[0:10]
 
+    def __add__(self, other):
+        if issubclass(other.__class__, self.__class__):
+            return self.quantity + other.quantity
+        return None
 
 # Item.instantiate_from_csv("items.csv")
 # print(Item.all)
