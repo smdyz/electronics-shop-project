@@ -3,6 +3,7 @@ import pytest
 from src.item import Item
 from src.phone import Phone
 from src.keyboard import Keyboard
+from src.item import InstantiateCSVError
 
 item1 = Item("Смартфон", 10000, 20)
 phone1 = Phone("iPhone 14", 120_000, 5, 2)
@@ -67,3 +68,10 @@ def test_keyboard_lang():
     assert str(kb.language) == "RU"
     kb.change_lang()
     assert str(kb.language) == "EN"
+
+
+def test_try_expect():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv("src/item.csv") #== "Отсутствует файл src/item.csv"
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv("src/items2.csv")  # == "Файл src/items2.csv поврежден"
